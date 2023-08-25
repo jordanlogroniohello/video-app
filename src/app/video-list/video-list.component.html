@@ -1,0 +1,126 @@
+<div class="intro-main">
+	<ng-container *ngIf="moviesIntro.primaryImage; else noImage">
+	  <div class="intro-coverphoto" [style.background-image]="'url(' + moviesIntro.primaryImage.url + ')'">
+		<div class="intro-container-gradient">
+			<div class="intro-container">
+				<div class="video-title">{{moviesIntro?.originalTitleText?.text}}</div>
+				<div class="video-description">
+				{{ moviesIntro?.genres?.genres ? joinGenreTexts(moviesIntro.genres.genres) + ' | ' : '' }} 
+				{{ moviesIntro?.releaseYear?.year ? moviesIntro.releaseYear.year + ' | ' : '' }}
+				{{ moviesIntro?.runtime?.displayableProperty?.value ? moviesIntro.runtime.displayableProperty.value.plainText + ' | ' : '' }} 
+				{{ moviesIntro?.titleType?.text ? moviesIntro.titleType.text  : '' }}
+				</div>
+				<p class="video-plot">{{ moviesIntro?.plot?.plotText?.plainText ? moviesIntro.plot.plotText.plainText : 'No plot available' }}</p>
+				<p><button class="intro-view-button" [routerLink]="['/details', moviesIntro.id]">View Details</button></p>
+			</div>
+		</div>	
+	  </div>
+	</ng-container>
+
+	<ng-template #noImage>
+	  <div class="intro-coverphoto" [style.background-image]="'url(assets/images/film.svg)'">
+	  	<div class="intro-container-gradient">
+			<div class="intro-container">
+				<div class="video-title">{{moviesIntro?.originalTitleText?.text}}</div>
+				<div class="video-description">
+				{{ moviesIntro?.genres?.genres ? joinGenreTexts(moviesIntro.genres.genres) + ' | ' : '' }} 
+				{{ moviesIntro?.releaseYear?.year ? moviesIntro.releaseYear.year + ' | ' : '' }}
+				{{ moviesIntro?.runtime?.displayableProperty?.value ? moviesIntro.runtime.displayableProperty.value.plainText + ' | ' : '' }} 
+				{{ moviesIntro?.titleType?.text ? moviesIntro.titleType.text  : '' }}
+				</div>
+				<p class="video-plot">{{ moviesIntro?.plot?.plotText?.plainText ? moviesIntro.plot.plotText.plainText : 'No plot available' }}</p>
+				<p><button class="intro-view-button" [routerLink]="['/details', moviesIntro.id]">View Details</button></p>
+			</div>
+		</div>	
+	  </div>
+	</ng-template>
+</div>
+
+
+<div class="forMobile row wrap">
+	<div>
+		<ng-container *ngIf="moviesIntro.primaryImage; else noImage1">
+			<div class="intro-coverphoto" [style.background-image]="'url(' + moviesIntro.primaryImage.url + ')'"></div>
+			<div class="intro-container-gradient" >
+				<img src="assets/images/logo.svg" style="padding: 26px;">
+			</div>
+		</ng-container>
+		<ng-template #noImage1>
+			<div class="intro-coverphoto" [style.background-image]="'url(assets/images/film.svg)'"></div>
+			<div class="intro-container-gradient" >
+				<img src="assets/images/logo.svg" style="padding: 26px;">
+			</div>
+		</ng-template>
+	</div>
+	<div>
+		<div class="intro-container">
+			<div class="video-title">{{moviesIntro?.originalTitleText?.text}}</div>
+			<div class="video-description">
+			{{ moviesIntro?.genres?.genres ? joinGenreTexts(moviesIntro.genres.genres) + ' | ' : '' }} 
+			{{ moviesIntro?.releaseYear?.year ? moviesIntro.releaseYear.year + ' | ' : '' }}
+			{{ moviesIntro?.runtime?.displayableProperty?.value ? moviesIntro.runtime.displayableProperty.value.plainText + ' | ' : '' }} 
+			{{ moviesIntro?.titleType?.text ? moviesIntro.titleType.text  : '' }}
+			</div>
+			<p class="video-plot">{{ moviesIntro?.plot?.plotText?.plainText ? moviesIntro.plot.plotText.plainText : 'No plot available' }}</p>
+			<p><button class="intro-view-button" [routerLink]="['/details', moviesIntro.id]">View Details</button></p>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="video-container">
+	<div class="section-title">Recently Added Films</div>	
+
+<!-- your-component.component.html  fxFlex.gt-md="25%" fxFlex.gt-sm="33.33%" fxFlex.xs="100%"  [width]="getImageWidth()"
+           [height]="getImageHeight()"-->
+	<div class="row-container" fxLayout="row wrap" >
+	  <div *ngFor="let movie of movies" [routerLink]="['/details', movie.id]" class="column-box" fxFlex="16.66%" fxFlex.md="25" fxFlex.sm="25" fxFlex.xs="33.33">
+	    <ng-container *ngIf="movie.primaryImage; else noImage">
+	      <img [src]="movie.primaryImage.url">
+	    </ng-container>
+	    <ng-template #noImage>
+	      <img src="assets/images/film.svg">
+	      <!--  <div>{{movie.titleText.text}}</div> -->
+	    </ng-template>
+	  </div>
+	</div>
+
+
+	<div class="section-title">Top Rated Films</div>	
+
+
+	<div class="row-container" fxLayout="row wrap" >
+	  <div *ngFor="let movie of moviesRandoms" [routerLink]="['/details', movie.id]" class="column-box" fxFlex="16.66%" fxFlex.md="25" fxFlex.sm="25" fxFlex.xs="33.33">
+	    <ng-container *ngIf="movie.primaryImage; else noImage">
+	      <img [src]="movie.primaryImage.url">
+	    </ng-container>
+	    <ng-template #noImage>
+	      <img src="assets/images/film.svg">
+	      <!--  <div>{{movie.titleText.text}}</div> -->
+	    </ng-template>
+	  </div>
+	</div>
+
+
+
+
+</div>
+
+<div class="footer-container" style="background-image: url(assets/images/gif-cinema.png)">
+	
+	<div>
+		<div class="footer-title"> Stay Connected </div>
+		<p class="footer-desc">From cult classics to modern masterpieces.
+		Stay updated with the latest movies, news and articles from INDI.</p>
+
+		<div fxLayout="row wrap">
+			<div fxFlex="250px" fxFlex.sm="100" fxFlex.xs="100">
+				<input class="footer-input"placeholder="Your Email"> 
+			</div>
+			<div fxFlex="auto" fxFlex.sm="100" fxFlex.xs="100">
+				<button class="footer-button">Submit</button> 
+			</div>	
+		</div>
+	</div>
+</div>

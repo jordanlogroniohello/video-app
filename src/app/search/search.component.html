@@ -1,0 +1,29 @@
+<div class="video-container">
+
+	<mat-form-field>
+		<mat-label>Search</mat-label>
+		<input matInput [formControl]="searchControl">
+		<button mat-icon-button matSuffix (click)="onSearch()">
+		<mat-icon>search</mat-icon>
+		</button>
+	</mat-form-field>
+
+
+	<!-- <div class="section-title">Recently Added Films</div>	 -->
+
+	<div *ngIf="isSearching" class="center-container" style="margin-top: 30px">
+		<ng-lottie [options]="options" (animationCreated)="animationCreated($event)" width="200px" height="200px"></ng-lottie>
+	</div>
+
+	<div *ngIf="!isSearching" class="row-container" fxLayout="row wrap" >
+	  <div *ngFor="let movie of movies" [routerLink]="['/details', movie.id]" class="column-box" fxFlex="16.66%" fxFlex.md="25" fxFlex.sm="25" fxFlex.xs="33.33" >
+	    <ng-container *ngIf="movie.primaryImage; else noImage">
+	      <img [src]="movie.primaryImage.url">	
+	    </ng-container>
+	    <ng-template #noImage>
+	      <img src="assets/images/film.svg">
+	      
+	    </ng-template>
+	  </div>
+	</div>
+</div>

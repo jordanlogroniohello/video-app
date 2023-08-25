@@ -1,0 +1,38 @@
+.coverphoto {
+	height: 300px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	border-radius: 10px;
+	background-color: #ff5151;
+}
+
+.video-description {
+	color: #747474;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 200% */
+}
+
+.video-plot {
+	color: #FFF;
+	font-size: 25px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 26px; 
+}
+
+.video-title {
+	color: #FFF;
+	font-size: 80px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.rating-upvote {
+	display: flex;
+	align-items: center;
+	margin: -30px 0px;
+}

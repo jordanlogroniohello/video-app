@@ -1,0 +1,46 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav mode="side" [opened]="!isMobile">
+    <mat-nav-list>
+      <mat-list-item>
+        <a matLine routerLink="/videos">
+        	<img src="assets/images/logo.svg">
+      	</a>
+      </mat-list-item>
+      <mat-list-item>
+        <!-- <a matLine (click)="openSearchModal()">
+        	<img src="assets/images/search.svg">
+      	</a> -->
+      	<a matLine routerLink="/search">
+        	<img src="assets/images/search.svg">
+      	</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matLine routerLink="/videos">
+        	<img src="assets/images/film.svg">
+      	</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matLine routerLink="/videos">
+        	<img src="assets/images/star.svg">
+      	</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matLine routerLink="/videos">
+        	<img src="assets/images/profile.svg">
+      	</a>
+      </mat-list-item>
+      <!-- Add more navigation links here -->
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div fxShow.gt-xs>
+      <!-- Content when screen width is greater than 375px -->
+      <router-outlet></router-outlet>
+    </div>
+	<div [fxShow]="isMobile">
+	  <app-tab-bar></app-tab-bar>
+	</div>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>

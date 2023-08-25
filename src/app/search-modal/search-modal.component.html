@@ -1,0 +1,30 @@
+  <mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput [formControl]="searchControl">
+  </mat-form-field>
+
+<mat-dialog-content>
+ 
+
+
+  <div class="row-container" flex  fxLayout="row">
+	  <div *ngFor="let movie of movies" class="column-box" fxFlex="16" >
+	    <ng-container *ngIf="movie.primaryImage; else noImage">
+	      <img [src]="movie.primaryImage.url"
+	           
+	           >	
+	    </ng-container>
+	    <ng-template #noImage>
+	      <img src="assets/images/film.svg"
+	          
+	           >
+	      <!--  <div>{{movie.titleText.text}}</div> -->
+	    </ng-template>
+	  </div>
+	</div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onSearch()">Search</button>
+  <button mat-button (click)="onClose()">Close</button>
+</mat-dialog-actions>

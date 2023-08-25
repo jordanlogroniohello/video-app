@@ -1,0 +1,34 @@
+<div class="video-container">
+    <div class="row-container" fxLayout="row wrap">
+    	<div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="100%" class="column-box">
+    		<ng-container *ngIf="videoDetails.primaryImage; else noImage">
+		      <img [src]="videoDetails.primaryImage.url">
+		    </ng-container>
+		    <ng-template #noImage>
+		      <img src="assets/images/film.svg">
+		      <!--  <div>{{movie.titleText.text}}</div> -->
+		    </ng-template>
+    	</div>
+    	<div fxFlex="80%" fxFlex.xs="100%" fxFlex.sm="100%" style="color:white">
+    		<div class="video-title">{{videoDetails?.originalTitleText?.text}}</div>
+
+			<p class="video-description">
+			{{ videoDetails?.genres?.genres ? joinGenreTexts(videoDetails.genres.genres) + ' | ' : '' }} 
+			{{ videoDetails?.releaseYear?.year ? videoDetails.releaseYear.year + ' | ' : '' }}
+			{{ videoDetails?.runtime?.displayableProperty?.value ? videoDetails.runtime.displayableProperty.value.plainText + ' | ' : '' }} 
+			{{ videoDetails?.titleType?.text ? videoDetails.titleType.text  : '' }}
+			</p>
+			<div class="video-plot">{{ videoDetails?.plot?.plotText?.plainText ? videoDetails.plot.plotText.plainText : 'No plot available' }}</div>
+			<div fxLayout="row wrap"  class="rating-upvote">
+				<ng-lottie [options]="rating"  width="150px" height="150px" fxFlex.sm="100" fxFlex.xs="100"></ng-lottie> {{ videoDetails?.ratingsSummary?.aggregateRating ? videoDetails?.ratingsSummary?.aggregateRating : 'N/A' }}
+				<ng-lottie [options]="upvote"  width="100px" height="100px" fxFlex.sm="100" fxFlex.xs="100"></ng-lottie>  {{ videoDetails?.ratingsSummary?.voteCount ? videoDetails?.ratingsSummary?.voteCount : 'N/A' }}
+			</div>
+
+			<p *ngIf="creators.length > 0"> Creators: {{this.creators }} </p>
+			<p *ngIf="cast.length > 0">Casts: {{this.cast}}</p>
+			<p> <button class="intro-view-button">Add to my list</button> </p>
+    	</div>
+    </div>
+</div>
+
+

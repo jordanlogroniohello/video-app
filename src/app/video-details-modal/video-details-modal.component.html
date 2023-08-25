@@ -1,0 +1,31 @@
+
+<mat-dialog-content>
+
+
+
+	<ng-container *ngIf="data.video.primaryImage; else noImage">
+      <div class="coverphoto" [style.background-image]="'url(' + data.video.primaryImage.url + ')'"></div>
+    </ng-container>
+    <ng-template #noImage>
+      <div class="coverphoto" [style.background-image]="'url(assets/images/film.svg)'"></div>
+    </ng-template>
+
+	<h1>{{data.video.originalTitleText.text}}</h1>
+
+	<p>
+	{{ data?.video?.genres?.genres ? joinGenreTexts(data.video.genres.genres) + ' | ' : '' }} 
+	{{ data.video?.releaseYear?.year ? data.video.releaseYear.year + ' | ' : '' }}
+	{{ data.video?.runtime?.displayableProperty?.value ? data.video.runtime.displayableProperty.value.plainText + ' | ' : '' }} 
+	{{ data.video?.titleType?.text ? data.video.titleType.text  : '' }}
+	</p>	
+	<p>{{ data?.video?.plot?.plotText?.plainText ? data.video.plot.plotText.plainText : 'No plot available' }}</p>
+
+
+
+
+  
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button mat-button [mat-dialog-close]="true" cdkFocusInitial>Add to My List</button>
+</mat-dialog-actions>

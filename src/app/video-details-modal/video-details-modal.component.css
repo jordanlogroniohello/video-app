@@ -1,0 +1,8 @@
+.coverphoto {
+	height: 300px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	border-radius: 10px;
+	background-color: #ff5151;
+}
